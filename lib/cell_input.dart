@@ -1,4 +1,3 @@
-import 'package:cell_input/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -10,10 +9,13 @@ class CellInput extends StatefulWidget {
   InputCompleteCallback inputCompleteCallback;
   bool autofocus = true;
 
-  CellInput({Key key,this.cellCount = 6,
-    this.inputType,
-    this.autofocus = true,
-    this.inputCompleteCallback}) :super(key:key);
+  CellInput(
+      {Key key,
+      this.cellCount = 6,
+      this.inputType,
+      this.autofocus = true,
+      this.inputCompleteCallback})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -118,11 +120,11 @@ class _CellInputState extends State<CellInput> {
               getIndexStr(i),
               style: TextStyle(
                   fontSize: 22,
-                  color: Utils.hexToColor('#1B1B4E'),
+                  color: Color(0X1B1B4E),
                   fontWeight: FontWeight.w600),
             ),
             decoration: BoxDecoration(
-                color: Utils.hexToColor('#F5F6FB'),
+                color:Color(0XF5F6FB),
                 border: Border.all(width: 1, color: getBoarderColor(i)),
                 borderRadius: BorderRadius.circular(4)),
           ),
@@ -136,15 +138,15 @@ class _CellInputState extends State<CellInput> {
   Color getBoarderColor(int index) {
     if (inputStr == null || inputStr.isEmpty) {
       if (index == 0) {
-        return Utils.getMainBlue();
+        return Color(0X2948FF);
       } else {
-        return Utils.hexToColor('#F5F6FB');
+        return Color(0XF5F6FB);
       }
     } else {
       if (index == inputStr.length) {
-        return Utils.getMainBlue();
+        return Color(0X2948FF);
       } else {
-        return Utils.hexToColor('#F5F6FB');
+        return Color(0XF5F6FB);
       }
     }
   }
