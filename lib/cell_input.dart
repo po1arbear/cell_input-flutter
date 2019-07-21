@@ -8,20 +8,37 @@ class CellInput extends StatefulWidget {
   InputType inputType = InputType.number;
   InputCompleteCallback inputCompleteCallback;
   bool autofocus = true;
+  BorderRadiusGeometry borderRadius;
+  Color solidColor;
+  Color strokeColor;
+  Color textColor;
+  double fontSize;
 
   CellInput(
       {Key key,
       this.cellCount = 6,
       this.inputType,
       this.autofocus = true,
-      this.inputCompleteCallback})
+      this.inputCompleteCallback,
+      this.borderRadius,
+      this.solidColor,
+      this.strokeColor = Colors.blue,
+      this.textColor,
+      this.fontSize = 22})
       : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    print('createState:' + inputType.toString());
     return _CellInputState(
-        cellCount, inputType, autofocus, inputCompleteCallback);
+        cellCount,
+        inputType,
+        autofocus,
+        inputCompleteCallback,
+        borderRadius,
+        solidColor,
+        strokeColor,
+        textColor,
+        fontSize);
   }
 }
 
@@ -37,9 +54,22 @@ class _CellInputState extends State<CellInput> {
   InputType _inputType = InputType.number;
   InputCompleteCallback _inputCompleteCallback;
   bool _autofocus = true;
+  BorderRadiusGeometry _borderRadius;
+  Color _solidColor;
+  Color _strokeColor;
+  Color _textColor;
+  double _fontSize;
 
-  _CellInputState(this._cellCount, this._inputType, this._autofocus,
-      this._inputCompleteCallback);
+  _CellInputState(
+      this._cellCount,
+      this._inputType,
+      this._autofocus,
+      this._inputCompleteCallback,
+      this._borderRadius,
+      this._solidColor,
+      this._strokeColor,
+      this._textColor,
+      this._fontSize);
 
   TextEditingController _controller = TextEditingController();
 
@@ -119,14 +149,14 @@ class _CellInputState extends State<CellInput> {
             child: Text(
               getIndexStr(i),
               style: TextStyle(
-                  fontSize: 22,
-                  color: Color(0X1B1B4E),
+                  fontSize: _fontSize,
+                  color: _textColor,
                   fontWeight: FontWeight.w600),
             ),
             decoration: BoxDecoration(
-                color:Color(0XF5F6FB),
+                color: _solidColor,
                 border: Border.all(width: 1, color: getBoarderColor(i)),
-                borderRadius: BorderRadius.circular(4)),
+                borderRadius: _borderRadius),
           ),
         ),
       ));
@@ -138,15 +168,15 @@ class _CellInputState extends State<CellInput> {
   Color getBoarderColor(int index) {
     if (inputStr == null || inputStr.isEmpty) {
       if (index == 0) {
-        return Color(0X2948FF);
+        return _strokeColor;
       } else {
-        return Color(0XF5F6FB);
+        return _solidColor;
       }
     } else {
       if (index == inputStr.length) {
-        return Color(0X2948FF);
+        return _strokeColor;
       } else {
-        return Color(0XF5F6FB);
+        return _solidColor;
       }
     }
   }

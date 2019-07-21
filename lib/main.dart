@@ -53,16 +53,22 @@ class _MyHomePageState extends State<MyHomePage> {
     print("build");
     return Scaffold(
         appBar: AppBar(
-          title: Text("验证码输入框"),
+          title: Text("单格输入框"),
         ),
         body: Column(
           children: <Widget>[
-            CellInput(
-              key: UniqueKey(),
-              autofocus: true,
-              inputType: _inputType,
-
+            SizedBox(
+              height: 20,
             ),
+            CellInput(
+                key: UniqueKey(),
+                autofocus: true,
+                inputType: _inputType,
+                solidColor: Color(0xFFF5F6FB),
+                borderRadius: BorderRadius.circular(4),
+                inputCompleteCallback: (v) {
+                  print(v);
+                }),
             RadioListTile<String>(
                 value: '密码',
                 title: Text('密码'),
