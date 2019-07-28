@@ -1,4 +1,4 @@
-import 'package:cell_input/precision_limit_formatter.dart';
+import 'package:cell_input/formatter/precision_limit_formatter.dart';
 import 'package:flutter/material.dart';
 
 class FormatterTest extends StatelessWidget {
